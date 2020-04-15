@@ -52,13 +52,13 @@ function run(creep) {
             }
             return;
         case STATE_BUILDING:
-            let target = Game.getObjectById(creep.memory.tid);
-            if (target) {
-                if (creep.build(target) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(target);
+            let constructSite = Game.getObjectById(creep.memory.tid);
+            if (constructSite) {
+                if (creep.build(constructSite) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(constructSite);
                 }
             }
-            if (!target) {
+            if (!constructSite) {
                 delete creep.memory.tid;
                 creep.memory.state = STATE_COLLECT;
             }
