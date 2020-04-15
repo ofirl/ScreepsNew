@@ -14,6 +14,7 @@ function init(creep) {
 }
 
 function run(creep) {
+    return;
     switch (creep.memory.state) {
         case STATE_COLLECTING:
             if (creep.store[RESOURCE_ENERGY] === creep.store.getCapacity()) {
