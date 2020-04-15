@@ -7,7 +7,7 @@
  *
  * @see {@link http://support.screeps.com/hc/en-us/articles/208488525-Nuke}
  */
-Nuke = function() { };
+function Nuke() { };
 
 Nuke.prototype =
 {

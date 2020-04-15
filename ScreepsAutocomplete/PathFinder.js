@@ -4,7 +4,9 @@
  *
  * @see {@link http://support.screeps.com/hc/en-us/articles/207023879-PathFinder}
  */
-PathFinder =
+function PathFinder() { }
+
+PathFinder.prototype =
 {
     /**
      * Find an optimal path between origin and goal.
@@ -36,7 +38,7 @@ PathFinder =
      *
      * @return {{path:Array<RoomPosition>,opts:number,cost:number,incomplete:boolean}} An object containing: path - An array of RoomPosition objects; ops - Total number of operations performed before this path was calculated; cost - The total cost of the path as derived from plainCost, swampCost and any given CostMatrix instances; incomplete - If the pathfinder fails to find a complete path, this will be true. Note that path will still be populated with a partial path which represents the closest path it could find given the search parameters.
      */
-    search: function(origin, goal, opts) { },
+    search: function (origin, goal, opts) { },
 
     /**
      * Specify whether to use this new experimental pathfinder in game objects methods.
@@ -51,18 +53,18 @@ PathFinder =
      *
      * @param {boolean} isEnabled Whether to activate the new pathfinder or deactivate.
      */
-    use: function(isEnabled) { }
+    use: function (isEnabled) { }
 };
 
 /**
- * Creates a new CostMatrix containing 0's for all positions.
- *
- * @constructor
- * @class
- *
- * @see {@link http://support.screeps.com/hc/en-us/articles/207023879-PathFinder#CostMatrix}
- */
-PathFinder.CostMatrix = function() { };
+    * Creates a new CostMatrix containing 0's for all positions.
+    *
+    * @constructor
+    * @class
+    *
+    * @see {@link http://support.screeps.com/hc/en-us/articles/207023879-PathFinder#CostMatrix}
+    */
+PathFinder.CostMatrix = function CostMatrix() { }
 
 /**
  * Static method which deserializes a new CostMatrix using the return value of serialize.
@@ -76,7 +78,7 @@ PathFinder.CostMatrix = function() { };
  *
  * @return {CostMatrix}
  */
-PathFinder.CostMatrix.deserialize = function(val) { };
+PathFinder.CostMatrix.deserialize = function (val) { };
 
 
 PathFinder.CostMatrix.prototype =
@@ -92,7 +94,7 @@ PathFinder.CostMatrix.prototype =
      * @param {number} y Y position in the room.
      * @param {number} cost Cost of this position. Must be a whole number. A cost of 0 will use the terrain cost for that tile. A cost greater than or equal to 255 will be treated as unwalkable.
      */
-    set: function(x, y, cost) { },
+    set: function (x, y, cost) { },
 
     /**
      * Get the cost of a position in this CostMatrix.
@@ -106,7 +108,7 @@ PathFinder.CostMatrix.prototype =
      *
      * @return {number}
      */
-    get: function(x, y) { },
+    get: function (x, y) { },
 
     /**
      * Copy this CostMatrix into a new CostMatrix with the same data.
@@ -117,7 +119,7 @@ PathFinder.CostMatrix.prototype =
      *
      * @return {CostMatrix}
      */
-    clone: function() { },
+    clone: function () { },
 
     /**
      * Returns a compact representation of this CostMatrix which can be stored via JSON.stringify
@@ -128,5 +130,5 @@ PathFinder.CostMatrix.prototype =
      *
      * @return {Array<number>} An array of numbers. There's not much you can do with the numbers besides store them for later.
      */
-    serialize: function() { }
+    serialize: function () { }
 };

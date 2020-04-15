@@ -18,7 +18,7 @@
  *
  * @see {@link http://support.screeps.com/hc/en-us/articles/208488525-Nuke}
  */
-RoomVisual = function(roomName) { };
+function RoomVisual(roomName) { };
 
 RoomVisual.prototype =
     {

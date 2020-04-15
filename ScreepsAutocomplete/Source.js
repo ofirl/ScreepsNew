@@ -7,7 +7,7 @@
  *
  * @see {@link http://support.screeps.com/hc/en-us/articles/203079211-Source}
  */
-Source = function() { };
+function Source() { };
 
 Source.prototype =
 {

@@ -5,7 +5,9 @@
  *
  * @class
  */
-Game = {
+function Game() {}
+
+Game.prototype = {
     /**
      * A hash containing all your construction sites with their id as hash keys.
      *

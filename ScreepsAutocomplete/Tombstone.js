@@ -6,7 +6,7 @@
  *
  * @see {@link https://docs.screeps.com/api/#Tombstone}
  */
-Tombstone = function() { };
+function Tombstone() { };
 
 Tombstone.prototype =
 {

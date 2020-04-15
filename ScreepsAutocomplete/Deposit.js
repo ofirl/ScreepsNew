@@ -7,7 +7,7 @@
  *
  * @see {@link https://docs.screeps.com/api/#Deposit}
  */
-Deposit = function () {
+function Deposit() {
 };
 
 Deposit.prototype = {

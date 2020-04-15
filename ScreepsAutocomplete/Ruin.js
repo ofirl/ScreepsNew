@@ -6,8 +6,7 @@
  *
  * @see {@link https://docs.screeps.com/api/#Ruin}
  */
-Ruin = function () {
-};
+function Ruin() {};
 
 Ruin.prototype = {
 

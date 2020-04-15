@@ -7,7 +7,10 @@
  *
  * @see {@link http://support.screeps.com/hc/en-us/articles/203079011-Room}
  */
-Room = {
+function Room() {}
+
+Room.prototype =
+{
     /**
      * Serialize a path array into a short string representation, which is suitable to store in memory.
      *
@@ -33,10 +36,7 @@ Room = {
      * return {Array} A path array.
      */
     deserializePath: function(path) { },
-};
 
-Room.prototype =
-{
     /**
      * The Controller structure of this room, if present, otherwise undefined.
      *
@@ -431,7 +431,7 @@ Room.prototype =
  *
  * @see {@link https://docs.screeps.com/api/#Room-Terrain}
  */
-Room.Terrain = function(roomName) {},
+Room.Terrain = function Terrain(roomName) {},
 
 Room.Terrain.prototype = {
     /**

@@ -5,7 +5,7 @@
  *
  * @see {@link https://docs.screeps.com/power.html#Power-Creeps}
  */
-PowerCreep = function() { };
+function PowerCreep() { };
 
 PowerCreep.prototype =
 {

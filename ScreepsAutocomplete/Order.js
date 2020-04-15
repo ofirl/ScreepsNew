@@ -1,3 +1,7 @@
+/**
+ * Order - Market order structure.
+ * @typedef {Object} Order
+ */
 Order = {
     /**
      * The unique order ID.

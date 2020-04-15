@@ -7,7 +7,7 @@
  *
  * @see {@link http://support.screeps.com/hc/en-us/articles/207218579-Mineral}
  */
-Mineral = function() { };
+function Mineral() { };
 
 Mineral.prototype =
 {

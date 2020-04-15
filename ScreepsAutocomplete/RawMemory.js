@@ -5,7 +5,9 @@
  *
  * @see {@link http://support.screeps.com/hc/en-us/articles/205619121-RawMemory}
  */
-RawMemory = {
+function RawMemory() {}
+
+RawMemory.prototype = {
     /**
      * An object with asynchronous memory segments available on this tick.
      * Each object key is the segment ID with data in string values.

@@ -7,7 +7,7 @@
  *
  * @see {@link http://support.screeps.com/hc/en-us/articles/207710979-OwnedStructure}
  */
-OwnedStructure = function() { };
+function OwnedStructure() { };
 
 OwnedStructure.prototype =
 {

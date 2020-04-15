@@ -15,7 +15,7 @@ const roomControllers = {
 
 /**
  * 
- * @param {Creep} creep 
+ * @param {Room} creep 
  */
 function getRole(creep) {
     if (!creep.memory.role) {

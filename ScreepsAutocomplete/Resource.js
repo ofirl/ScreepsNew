@@ -8,7 +8,7 @@
  *
  * @see {@link http://support.screeps.com/hc/en-us/articles/203016362-Resource}
  */
-Resource = function() { };
+function Resource() { };
 
 Resource.prototype =
 {

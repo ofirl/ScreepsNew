@@ -8,7 +8,7 @@
  * @class
  * @extends {RoomObject}
  */
-Flag = function() { };
+function Flag() { };
 
 Flag.prototype =
 {

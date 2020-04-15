@@ -13,7 +13,7 @@
  *
  * @see {@link https://docs.screeps.com/api/#Store}
  */
-Store = function() { };
+function Store() { };
 
 Store.prototype =
 {

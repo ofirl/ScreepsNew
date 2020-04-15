@@ -5,7 +5,9 @@
  *
  * @see {@link http://support.screeps.com/hc/en-us/articles/203013212-Creep}
  */
-Creep = function() { };
+function Creep() { 
+    this.test = {}
+};
 
 Creep.prototype =
 {
@@ -177,7 +179,7 @@ Creep.prototype =
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_INVALID_TARGET|ERR_NOT_IN_RANGE|ERR_NO_BODYPART}
      */
-    attack: function(target) { },
+    attack: function (target) { },
 
     /**
      * Decreases the controller's downgrade or reservation timer for 1 tick per every 5 CLAIM body parts (so the creep must have at least 5xCLAIM).
@@ -192,7 +194,7 @@ Creep.prototype =
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_INVALID_TARGET|ERR_NOT_IN_RANGE|ERR_NO_BODYPART}
      */
-    attackController: function(target) { },
+    attackController: function (target) { },
 
     /**
      * Build a structure at the target construction site using carried energy.
@@ -207,7 +209,7 @@ Creep.prototype =
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_TARGET|ERR_NOT_IN_RANGE|ERR_NO_BODYPART}
      */
-    build: function(target) { },
+    build: function (target) { },
 
     /**
      * Cancel the order given during the current game tick.
@@ -220,7 +222,7 @@ Creep.prototype =
      *
      * @return {number|OK|ERR_NOT_FOUND}
      */
-    cancelOrder: function(methodName) { },
+    cancelOrder: function (methodName) { },
 
     /**
      * Claims a neutral controller under your control.
@@ -235,7 +237,7 @@ Creep.prototype =
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_INVALID_TARGET|ERR_FULL|ERR_NOT_IN_RANGE|ERR_NO_BODYPART|ERR_GCL_NOT_ENOUGH}
      */
-    claimController: function(target) { },
+    claimController: function (target) { },
 
     /**
      * Dismantles any (even hostile) structure returning 50% of the energy spent on its repair.
@@ -251,7 +253,7 @@ Creep.prototype =
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_INVALID_TARGET|ERR_NOT_IN_RANGE|ERR_NO_BODYPART}
      */
-    dismantle: function(target) { },
+    dismantle: function (target) { },
 
     /**
      * Drop this resource on the ground.
@@ -265,7 +267,7 @@ Creep.prototype =
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_NOT_ENOUGH_RESOURCES}
      */
-    drop: function(resourceType, amount) { },
+    drop: function (resourceType, amount) { },
 
     /**
      * Get the quantity of live body parts of the given type.
@@ -279,7 +281,7 @@ Creep.prototype =
      *
      * @return {number} A number representing the quantity of body parts.
      */
-    getActiveBodyparts: function(type) { },
+    getActiveBodyparts: function (type) { },
 
     /**
      * Harvest energy from the source or minerals from the mineral deposit.
@@ -295,7 +297,7 @@ Creep.prototype =
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_NOT_FOUND|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_TARGET|ERR_NOT_IN_RANGE|ERR_NO_BODYPART}
      */
-    harvest: function(target) { },
+    harvest: function (target) { },
 
     /**
      * Heal self or another creep.
@@ -311,7 +313,7 @@ Creep.prototype =
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_INVALID_TARGET|ERR_NOT_IN_RANGE|ERR_NO_BODYPART}
      */
-    heal: function(target) { },
+    heal: function (target) { },
 
     /**
      * Move the creep one square in the specified direction.
@@ -325,7 +327,7 @@ Creep.prototype =
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_TIRED|ERR_NO_BODYPART}
      */
-    move: function(direction) { },
+    move: function (direction) { },
 
     /**
      * Move the creep using the specified predefined path.
@@ -339,7 +341,7 @@ Creep.prototype =
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_NOT_FOUND|ERR_INVALID_ARGS|ERR_TIRED|ERR_NO_BODYPART}
      */
-    moveByPath: function(path) { },
+    moveByPath: function (path) { },
 
     /**
      * Find the optimal path to the target within the same room and move to it.
@@ -381,7 +383,7 @@ Creep.prototype =
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_TIRED|ERR_NO_BODYPART|ERR_INVALID_TARGET|ERR_NO_PATH}
      */
-    moveTo: function(x, y, opts) { },
+    moveTo: function (x, y, opts) { },
 
     /**
      * Toggle auto notification when the creep is under attack.
@@ -396,7 +398,7 @@ Creep.prototype =
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_INVALID_ARGS}
      */
-    notifyWhenAttacked: function(enabled) { },
+    notifyWhenAttacked: function (enabled) { },
 
     /**
      * Pick up an item (a dropped piece of energy).
@@ -411,7 +413,7 @@ Creep.prototype =
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_INVALID_TARGET|ERR_FULL|ERR_NOT_IN_RANGE}
      */
-    pickup: function(target) { },
+    pickup: function (target) { },
 
     /**
      * Help another creep to follow this creep.
@@ -426,7 +428,7 @@ Creep.prototype =
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_INVALID_TARGET|ERR_TIRED|ERR_NOT_IN_RANGE|ERR_NO_BODYPART}
      */
-    pull: function(target) { },
+    pull: function (target) { },
 
     /**
      * A ranged attack against another creep or structure.
@@ -442,7 +444,7 @@ Creep.prototype =
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_INVALID_TARGET|ERR_NOT_IN_RANGE|ERR_NO_BODYPART}
      */
-    rangedAttack: function(target) { },
+    rangedAttack: function (target) { },
 
     /**
      * Heal another creep at a distance.
@@ -458,7 +460,7 @@ Creep.prototype =
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_INVALID_TARGET|ERR_NOT_IN_RANGE|ERR_NO_BODYPART}
      */
-    rangedHeal: function(target) { },
+    rangedHeal: function (target) { },
 
     /**
      * A ranged attack against all hostile creeps or structures within 3 squares range.
@@ -472,7 +474,7 @@ Creep.prototype =
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_NO_BODYPART}
      */
-    rangedMassAttack: function() { },
+    rangedMassAttack: function () { },
 
     /**
      * Repair a damaged structure using carried energy.
@@ -487,7 +489,7 @@ Creep.prototype =
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_TARGET|ERR_NOT_IN_RANGE|ERR_NO_BODYPART}
      */
-    repair: function(target) { },
+    repair: function (target) { },
 
     /**
      * Temporarily block a neutral controller from claiming by other players.
@@ -503,7 +505,7 @@ Creep.prototype =
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_INVALID_TARGET|ERR_NOT_IN_RANGE|ERR_NO_BODYPART}
      */
-    reserveController: function(target) { },
+    reserveController: function (target) { },
 
     /**
      * Display a visual speech balloon above the creep with the specified message. The message will be
@@ -518,8 +520,8 @@ Creep.prototype =
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY}
      */
-    say: function(message, public) { },
-    
+    say: function (message, public) { },
+
     /**
      * Sign a controller with an arbitrary text visible to all players. 
      * This text will appear in the room UI, in the world map, and can be accessed via the API. 
@@ -535,7 +537,7 @@ Creep.prototype =
      *
      * @return {number|OK|ERR_INVALID_TARGET|ERR_BUSY|ERR_NOT_IN_RANGE}
      */
-    signController: function(target, text) { },
+    signController: function (target, text) { },
 
     /**
      * Kill the creep immediately.
@@ -546,7 +548,7 @@ Creep.prototype =
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY}
      */
-    suicide: function() { },
+    suicide: function () { },
 
     /**
      * Transfer resource from the creep to another object.
@@ -562,7 +564,7 @@ Creep.prototype =
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_TARGET|ERR_FULL|ERR_NOT_IN_RANGE|ERR_INVALID_ARGS}
      */
-    transfer: function(target, resourceType, amount) { },
+    transfer: function (target, resourceType, amount) { },
 
     /**
      * Upgrade your controller to the next level using carried energy.
@@ -581,7 +583,7 @@ Creep.prototype =
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_TARGET|ERR_NOT_IN_RANGE|ERR_NO_BODYPART}
      */
-    upgradeController: function(target) { },
+    upgradeController: function (target) { },
 
     /**
      * Withdraw resources from a structure.
@@ -599,5 +601,5 @@ Creep.prototype =
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_TARGET|ERR_FULL|ERR_NOT_IN_RANGE|ERR_INVALID_ARGS}
      */
-    withdraw: function(target, resourceType, amount) { }
+    withdraw: function (target, resourceType, amount) { }
 };

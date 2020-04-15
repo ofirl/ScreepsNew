@@ -8,7 +8,7 @@
  *
  * @see {@link http://support.screeps.com/hc/en-us/articles/203016342-ConstructionSite}
  */
-ConstructionSite = function() { };
+function ConstructionSite() { };
 
 ConstructionSite.prototype =
 {

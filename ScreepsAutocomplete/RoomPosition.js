@@ -12,7 +12,7 @@
  *
  * @see {@link http://support.screeps.com/hc/en-us/articles/203079201-RoomPosition}
  */
-RoomPosition = function(x, y, roomName) { };
+function RoomPosition(x, y, roomName) { };
 
 RoomPosition.prototype =
 {

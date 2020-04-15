@@ -5,7 +5,7 @@
  *
  * @see {@link http://support.screeps.com/hc/en-us/articles/203079221-Structure}
  */
-Structure = function() { };
+function Structure() { };
 
 Structure.prototype =
 {
