@@ -3,6 +3,7 @@
  * 1) dropped energy
  * 2) miner creep
  */
+
 Creep.prototype.collectEnergy = function () {
     // Collect energy.
     let {target, type} = this.getTargetUnion({
