@@ -11,10 +11,14 @@ function init(creep) {
     creep.memory.state = STATE_COLLECT;
 }
 
+/**
+ * 
+ * @param {Creep} creep 
+ */
 function run(creep) {
     switch (creep.memory.state) {
         case STATE_COLLECT: {
-            if (_.sum(creep.carry) === creep.carryCapacity) {
+            if (creep.store[RESOURCE_ENERGY] === creep.store.getCapacity()) {
                 creep.say('⚡ deliver');
                 creep.memory.state = STATE_DELIVER;
                 // Clear the collection point as we wish to reselect collection target for next collection.
@@ -26,7 +30,7 @@ function run(creep) {
             return;
         }
         case STATE_DELIVER: {
-            if (creep.carry.energy === 0) {
+            if (creep.store[RESOURCE_ENERGY] === 0) {
                 creep.say('🔄 collect');
                 creep.memory.state = STATE_COLLECT;
                 run(creep);

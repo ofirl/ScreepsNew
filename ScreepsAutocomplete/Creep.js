@@ -5,9 +5,7 @@
  *
  * @see {@link http://support.screeps.com/hc/en-us/articles/203013212-Creep}
  */
-function Creep() { 
-    this.test = {}
-};
+function Creep() { };
 
 Creep.prototype =
 {

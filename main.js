@@ -3,10 +3,15 @@ require('target');
 require('Room');
 require('Creep');
 
+/**
+ * Object with all the creep roles as keys
+ * @type {object} CreepRoles
+ */
 const creepRoles = {
     miner: require('creepRole.miner'),
     upgrader: require('creepRole.upgrader'),
     transport: require('creepRole.transport'),
+    builder: require('creepRole.builder'),
 };
 
 const roomControllers = {

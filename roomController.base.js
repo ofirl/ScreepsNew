@@ -5,7 +5,12 @@ if (!Memory.creepGen) {
 }
 
 module.exports = {
-    run: function(room, creepRoles) {
+    /**
+     * 
+     * @param {Room} room 
+     * @param {CreepRoles} creepRoles 
+     */
+    run: function (room, creepRoles) {
         if (!room.memory.init) {
             room.memory.spawnQueue = [];
             // A base needs at least 1 miner, transport and upgrader to function.
@@ -23,6 +28,10 @@ module.exports = {
                     role: 'upgrader',
                     min: 1,
                 },
+                builder: {
+                    role: 'builder',
+                    min: 1,
+                }
             };
             room.memory.init = true;
         }
