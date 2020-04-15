@@ -31,13 +31,6 @@ function run(creep) {
             if (!target) {
                 // The target was destroyed.
                 delete creep.memory.tid;
-
-                // Find next target
-                target = creep.pos.findClosestByRange(FIND_CONSTRUCTION_SITES);
-                if (target)
-                    creep.memory.tid = target.id;
-                else
-                    return;
             }
             if (target) {
                 if (!creep.isNearTo(target)) {
@@ -61,7 +54,16 @@ function run(creep) {
             }
             if (!constructSite) {
                 delete creep.memory.tid;
-                creep.memory.state = STATE_COLLECTING;
+                // Find next target
+                constructSite = creep.pos.findClosestByRange(FIND_CONSTRUCTION_SITES);
+                if (target) {
+                    creep.memory.tid = constructSite.id;
+                    creep.memory.state = STATE_MOVING;
+                }
+                else {
+                    creep.memory.state = STATE_COLLECTING;
+                }
+                
                 return;
             }
 
