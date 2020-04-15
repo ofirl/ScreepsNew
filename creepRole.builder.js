@@ -60,7 +60,7 @@ function run(creep) {
             }
             if (!constructSite) {
                 delete creep.memory.tid;
-                creep.memory.state = STATE_COLLECT;
+                creep.memory.state = STATE_COLLECTING;
             }
 
             return;
