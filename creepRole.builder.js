@@ -10,7 +10,7 @@ function parts(energy) {
 }
 
 function init(creep) {
-    creep.memory.state = STATE_COLLECT;
+    creep.memory.state = STATE_COLLECTING;
 }
 
 function run(creep) {
