@@ -17,7 +17,7 @@ module.exports = {
                 },
                 transport: {
                     role: 'transport',
-                    min: 1,
+                    min: room.find(FIND_SOURCES).length,
                 },
                 upgrader: {
                     role: 'upgrader',

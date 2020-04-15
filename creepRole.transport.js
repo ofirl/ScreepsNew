@@ -32,7 +32,7 @@ function run(creep) {
                 run(creep);
                 return;
             }
-            let {target, type} = creep.getTargetUnion({
+            let { target, type } = creep.getTargetUnion({
                 spawn: {
                     selector: () => _.max(
                         creep.room.find(FIND_MY_STRUCTURES, {
@@ -56,7 +56,7 @@ function run(creep) {
                 // We transferred all we could, pick a new target.
                 delete creep.memory.deliverTo;
             } else if (ret === ERR_NOT_IN_RANGE) {
-                creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
+                creep.moveTo(target, { visualizePathStyle: { stroke: '#ffffff' } });
             }
             return;
         }
