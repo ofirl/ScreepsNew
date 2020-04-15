@@ -6,7 +6,7 @@ const STATE_BUILDING = 3;
 
 function parts(energy) {
     // TODO. Scale miner upto 5 work parts.
-    return [WORK, WORK, CARRY, CARRY, MOVE];
+    return [WORK, CARRY, MOVE];
 }
 
 function init(creep) {
