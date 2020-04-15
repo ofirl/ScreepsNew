@@ -56,11 +56,13 @@ function run(creep) {
             if (constructSite) {
                 if (creep.build(constructSite) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(constructSite);
+                    return;
                 }
             }
             if (!constructSite) {
                 delete creep.memory.tid;
                 creep.memory.state = STATE_COLLECTING;
+                return;
             }
 
             return;
