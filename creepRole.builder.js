@@ -64,7 +64,7 @@ function run(creep) {
                     return;
                 }
             }
-            else (!constructSite) {
+            else {
                 delete creep.memory.tid;
                 // Find next target
                 constructSite = creep.pos.findClosestByRange(FIND_CONSTRUCTION_SITES);
