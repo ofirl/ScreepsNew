@@ -8,7 +8,12 @@ Creep.prototype.collectEnergy = function () {
     // Collect energy.
     let {target, type} = this.getTargetUnion({
         energy: {
-            selector: () => _.max(this.room.find(FIND_DROPPED_RESOURCES, {
+            selector: () => this.pos.findClosestByPath(FIND_DROPPED_RESOURCES, {
+                filter: (resource) => resource.resourceType === RESOURCE_ENERGY && resource.amount >= this.store[RESOURCE_ENERGY]
+            }),
+        },
+        energy2: {
+            selector: () => _.max(this.pos.findClosestByPath(FIND_DROPPED_RESOURCES, {
                 filter: (resource) => resource.resourceType === RESOURCE_ENERGY
             }), 'amount'),
         },
@@ -21,7 +26,8 @@ Creep.prototype.collectEnergy = function () {
     }, 'collectFrom');
     if (target) {
         switch (type) {
-            case 'energy': {
+            case 'energy':
+            case 'energy2': {
                 if (this.pickup(target) === ERR_NOT_IN_RANGE) {
                     this.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
                 }
