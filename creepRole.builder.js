@@ -35,7 +35,7 @@ function run(creep) {
                 run(creep);
             }
             else {
-                if (!creep.isNearTo(target)) {
+                if (!creep.inRangeTo(target, 2)) {
                     // Move so we adjacent to storage.
                     creep.moveTo(target);
                 } else {
