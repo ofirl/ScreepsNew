@@ -34,7 +34,7 @@ module.exports = {
                 },
                 builder: {
                     role: 'builder',
-                    min: Math.max(Math.floor(room.find(FIND_CONSTRUCTION_SITES).length), 1),
+                    min: Math.max(Math.floor(room.find(FIND_CONSTRUCTION_SITES).length) / 2, 1),
                 }
             };
         }
