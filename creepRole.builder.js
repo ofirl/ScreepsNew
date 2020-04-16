@@ -14,7 +14,6 @@ function init(creep) {
 }
 
 function run(creep) {
-    return;
     switch (creep.memory.state) {
         case STATE_COLLECTING:
             if (creep.store[RESOURCE_ENERGY] === creep.store.getCapacity()) {
@@ -32,39 +31,54 @@ function run(creep) {
             if (!target) {
                 // The target was destroyed.
                 delete creep.memory.tid;
+                creep.memory.state = STATE_COLLECTING;
+                run(creep);
             }
-            if (target) {
+            else {
                 if (!creep.isNearTo(target)) {
                     // Move so we adjacent to storage.
                     creep.moveTo(target);
                 } else {
-                    creep.memory.state = STATE_BUILDING;
+                    if (creep.store[RESOURCE_ENERGY] === creep.store.getCapacity())
+                        creep.memory.state = STATE_BUILDING;
+                    else
+                        creep.memory.state = STATE_COLLECTING;
+
+                    run(creep);
                 }
-            } else {
-                // Should not reach here
-                return;
             }
             return;
         case STATE_BUILDING:
+            if (creep.store[RESOURCE_ENERGY] === 0) {
+                creep.say('🔄 collect');
+                creep.memory.state = STATE_COLLECTING;
+                run(creep);
+                return;
+            }
             let constructSite = Game.getObjectById(creep.memory.tid);
             if (constructSite) {
                 if (creep.build(constructSite) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(constructSite);
+                    creep.memory.tid = constructSite.id;
+                    creep.memory.state = STATE_MOVING;
+                    run(creep);
                     return;
                 }
             }
-            if (!constructSite) {
+            else (!constructSite) {
                 delete creep.memory.tid;
                 // Find next target
                 constructSite = creep.pos.findClosestByRange(FIND_CONSTRUCTION_SITES);
                 if (constructSite) {
+                    creep.say('⚡ deliver');
                     creep.memory.tid = constructSite.id;
                     creep.memory.state = STATE_MOVING;
                 }
                 else {
+                    creep.say('🔄 collect');
                     creep.memory.state = STATE_COLLECTING;
                 }
-                
+
+                run(creep);
                 return;
             }
 
