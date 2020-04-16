@@ -34,7 +34,7 @@ module.exports = {
                 },
                 builder: {
                     role: 'builder',
-                    min: room.find(FIND_CONSTRUCTION_SITES),
+                    min: room.find(FIND_CONSTRUCTION_SITES).length,
                 }
             };
         }
