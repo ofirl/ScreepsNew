@@ -30,7 +30,7 @@ function run(creep) {
                 delete creep.memory.tid;
             }
             if (target) {
-                if (!creep.isNearTo(target)) {
+                if (!creep.inRangeTo(target, 2)) {
                     // Move so we adjacent to storage.
                     creep.moveTo(target);
                 } else {

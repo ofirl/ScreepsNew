@@ -11,9 +11,13 @@ module.exports = {
      * @param {CreepRoles} creepRoles 
      */
     run: function (room, creepRoles) {
-        if (!room.memory.init) {
+        if (!room.memory.spawnQueue) {
             room.memory.spawnQueue = [];
-            // A base needs at least 1 miner, transport and upgrader to function.
+            room.memory.init = true;
+        }
+
+        if (!room.memory.spawnSettings || room.memory.spwanSettingsRefresh === Game.time) {
+            room.memory.spwanSettingsRefresh = Game.time + 100;
             room.memory.spawnSettings = {
                 miner: {
                     role: 'miner',
@@ -26,14 +30,13 @@ module.exports = {
                 },
                 upgrader: {
                     role: 'upgrader',
-                    min: 1,
+                    min: room.controller.level,
                 },
                 builder: {
                     role: 'builder',
-                    min: 1,
+                    min: room.find(FIND_CONSTRUCTION_SITES),
                 }
             };
-            room.memory.init = true;
         }
 
         let availableSpawns = room.findAvailableSpawns();

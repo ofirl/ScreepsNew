@@ -5,7 +5,7 @@
  *
  * @class
  */
-function Game() {}
+function Game() { }
 
 Game.prototype = {
     /**
@@ -71,20 +71,20 @@ Game.prototype = {
                "externally_allocated_size": 38430000
            }
          */
-        getHeapStatistics: function() {},
+        getHeapStatistics: function () { },
 
         /**
          * Get amount of CPU time used from the beginning of the current game tick. Always returns 0 in the Simulation mode.
          *
          * @return {number} Returns the currently used CPU time as a float number
          */
-        getUsed: function () {},
+        getUsed: function () { },
 
         /**
          * This method is only available when Virtual machine is set to Isolated in your account runtime settings.
          * Reset your runtime environment and wipe all data in heap memory.
          */
-        halt: function() {},
+        halt: function () { },
 
         /**
          * Allocate CPU limits to different shards. Total amount of CPU should remain equal to Game.cpu.shardLimits. This method can be used only once per 12 hours.
@@ -92,7 +92,7 @@ Game.prototype = {
          *
          * @return {OK|ERR_BUSY|ERR_INVALID_ARGS}
          */
-        setShardLimits: function(limits) {},
+        setShardLimits: function (limits) { },
     },
 
 
@@ -214,7 +214,7 @@ Game.prototype = {
          * @example
          * var exits = Game.map.describeExits('W8N3');
          */
-        describeExits: function (roomName) {},
+        describeExits: function (roomName) { },
 
         /**
          * Find the exit direction from the given room en route to another room.
@@ -228,7 +228,7 @@ Game.prototype = {
          *
          * @see {@link http://support.screeps.com/hc/en-us/articles/203079191-Map#findExit}
          */
-        findExit: function (fromRoom, toRoom, opts) {},
+        findExit: function (fromRoom, toRoom, opts) { },
 
         /**
          * Find route from the given room to another room.
@@ -248,7 +248,7 @@ Game.prototype = {
                 { exit: FIND_EXIT_BOTTOM, room: 'arena22' }
             ]
          */
-        findRoute: function (fromRoom, toRoom, opts) {},
+        findRoute: function (fromRoom, toRoom, opts) { },
 
         /**
          * Get the linear distance (in rooms) between two rooms.
@@ -264,7 +264,7 @@ Game.prototype = {
          *
          * @return {number} A number of rooms between the given two rooms.
          */
-        getRoomLinearDistance: function (roomName1, roomName2, continuous) {},
+        getRoomLinearDistance: function (roomName1, roomName2, continuous) { },
 
         /**
          * Get a Room.Terrain object which provides fast access to static terrain data. This method works for any room in the world even if you have no access to it.
@@ -277,7 +277,7 @@ Game.prototype = {
          *
          * @return {Room.Terrain} Returns new Room.Terrain object.
          */
-        getRoomTerrain: function(roomName) {},
+        getRoomTerrain: function (roomName) { },
 
         /**
          * Get terrain type at the specified room position.
@@ -298,7 +298,7 @@ Game.prototype = {
          *
          * @return {"plain"|"swamp"|"wall"}
          */
-        getTerrainAt: function (x, y, roomName) {},
+        getTerrainAt: function (x, y, roomName) { },
 
         /**
          * Check if the room with the given name is available to move into
@@ -311,7 +311,7 @@ Game.prototype = {
          *
          * @return {boolean}
          */
-        isRoomAvailable: function (roomName) {}
+        isRoomAvailable: function (roomName) { }
     },
 
     /**
