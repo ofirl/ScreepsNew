@@ -35,8 +35,7 @@ function run(creep) {
                 run(creep);
             }
             else {
-                if (!creep.inRangeTo(target, 2)) {
-                    // Move so we adjacent to storage.
+                if (creep.build(target) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(target);
                 } else {
                     if (creep.store[RESOURCE_ENERGY] === creep.store.getCapacity())
