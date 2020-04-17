@@ -6,11 +6,11 @@
 
 Creep.prototype.collectEnergy = function () {
     // Collect energy.
-    let target;
+    let targetU;
     if (this.memory.collectFrom)
-        target = this.memory.collectFrom;
+        targetU = this.memory.collectFrom;
     else
-        target = this.getTargetUnion({
+        targetU = this.getTargetUnion({
             energy: {
                 selector: () => this.pos.findClosestByPath(FIND_DROPPED_RESOURCES, {
                     filter: (resource) => resource.resourceType === RESOURCE_ENERGY && resource.amount >= this.store.getFreeCapacity[RESOURCE_ENERGY]
@@ -40,9 +40,9 @@ Creep.prototype.collectEnergy = function () {
                 // validator: (creep) => creep.carry.energy > 0,
             },
         }, 'collectFrom');
-    if (target) {
-        this.memory.collectFrom = target;
-        let { target, type } = target;
+    if (targetU) {
+        this.memory.collectFrom = targetU;
+        let { target, type } = targetU;
         switch (type) {
             case 'energy':
             case 'energy2': {
