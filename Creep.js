@@ -45,6 +45,8 @@ Creep.prototype.collectEnergy = function () {
             },
         }, 'collectFrom');
     if (targetU.target) {
+        console.log(targetU.target);
+        console.log(targetU.target.id);
         this.memory.collectFrom = { target: targetU.target.id, type: targetU.type };
         let { target, type } = targetU;
         switch (type) {
