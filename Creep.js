@@ -9,7 +9,7 @@ Creep.prototype.collectEnergy = function () {
     let { target, type } = this.getTargetUnion({
         energy: {
             selector: () => this.pos.findClosestByPath(FIND_DROPPED_RESOURCES, {
-                filter: (resource) => resource.resourceType === RESOURCE_ENERGY && resource.amount >= this.store.getFreeCapacity[RESOURCE_ENERGY]
+                filter: (resource) => resource.resourceType === RESOURCE_ENERGY && resource.amount >= this.store.getFreeCapacity(RESOURCE_ENERGY)
             }),
         },
         // miner: {
