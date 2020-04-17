@@ -10,6 +10,8 @@ Creep.prototype.collectEnergy = function () {
     if (this.memory.collectFrom) {
         targetU = this.memory.collectFrom;
         targetU.target = Game.getObjectById(targetU.tid);
+        if (!targetU.target)
+            delete this.memory.collectFrom;
     }
     else
         targetU = this.getTargetUnion({
