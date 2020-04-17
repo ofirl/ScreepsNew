@@ -57,7 +57,7 @@ function run(creep) {
                 //         filter: (s) => s.structureType === STRUCTURE_TOWER && s.store && s.store.getFreeCapacity(RESOURCE_ENERGY) > 0
                 //     }),
                     // validator: (t) => t.store.getFreeCapacity(RESOURCE_ENERGY) > 0
-                },
+                // },
                 upgrader: {
                     selector: () => _.max(
                         creep.room.find(FIND_MY_CREEPS, {
