@@ -75,10 +75,10 @@ module.exports.loop = function () {
         for (let tower in towers) {
             let towerController = false;
             if (room.memory.controller) {
-                roomController = towerControllers[room.memory.controller];
+                towerController = towerControllers[room.memory.controller];
             }
             else {
-                roomController = towerControllers.base;
+                towerController = towerControllers.base;
             }
             towerController.run(tower);
         }
