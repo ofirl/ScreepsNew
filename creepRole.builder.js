@@ -7,7 +7,13 @@ const STATE_REPAIRING = 4;
 
 function parts(energy) {
     // TODO. Scale miner upto 5 work parts.
-    return [WORK, CARRY, MOVE];
+    let parts = [WORK, CARRY, MOVE];
+    let extraParts = [WORK, CARRY, MOVE];
+    let extraPartsNum = Math.min(Math.floor((energy - 200) / 200), 4);
+    for (let i = 0; i < extraPartsNum; i++)
+        parts.push(...extraParts);
+
+    return parts;
 }
 
 function init(creep) {
