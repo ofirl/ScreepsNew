@@ -67,6 +67,7 @@ function run(creep) {
                     validator: (c) => c.store[RESOURCE_ENERGY] < c.store.getCapacity(RESOURCE_ENERGY),
                 },
             }, 'deliverTo');
+            console.log(target)
             let ret = creep.transfer(target, RESOURCE_ENERGY);
             if (ret === ERR_NOT_IN_RANGE) {
                 creep.moveTo(target, { visualizePathStyle: { stroke: '#ffffff' } });
