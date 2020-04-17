@@ -59,10 +59,10 @@ function run(creep) {
                 upgrader: {
                     selector: () => _.max(
                         creep.room.find(FIND_MY_CREEPS, {
-                            filter: (c) => c.memory.role === 'upgrader' && _.sum(c.store[RESOURCE_ENERGY]) < c.store.getCapacity(RESOURCE_ENERGY)
+                            filter: (c) => c.memory.role === 'upgrader' && c.store[RESOURCE_ENERGY] < c.store.getCapacity(RESOURCE_ENERGY)
                         }),
-                        (c) => c.store.getCapacity(RESOURCE_ENERGY) - _.sum(c.store[RESOURCE_ENERGY])),
-                    validator: (c) => _.sum(c.store[RESOURCE_ENERGY]) < c.store.getCapacity(RESOURCE_ENERGY),
+                        (c) => c.store.getCapacity(RESOURCE_ENERGY) - c.store[RESOURCE_ENERGY]),
+                    validator: (c) => c.store[RESOURCE_ENERGY] < c.store.getCapacity(RESOURCE_ENERGY),
                 },
             }, 'deliverTo');
             let ret = creep.transfer(target, RESOURCE_ENERGY);
