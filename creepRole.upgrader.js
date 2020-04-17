@@ -5,8 +5,13 @@ const STATE_COLLECTING = 2;
 const STATE_UPGRADING = 3;
 
 function parts(energy) {
-    // TODO. Scale upgrader.
-    return [WORK, WORK, CARRY, MOVE];
+    let parts = [WORK, WORK, CARRY, MOVE];
+    let extraParts = [WORK];
+    let extraPartsNum = Math.min(Math.floor((energy - 300) / 100), 4);
+    for (let i = 0; i < extraPartsNum; i++)
+        parts.push(...extraParts);
+
+    return parts;
 }
 
 function init(creep) {
