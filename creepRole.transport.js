@@ -54,7 +54,7 @@ function run(creep) {
                 },
                 tower: {
                     selector: () => creep.room.find(FIND_MY_STRUCTURES, { filter: { structureType: STRUCTURE_TOWER } }),
-                    validator: (t) => { console.log(t.id); return false; t.store.getFreeCapacity(RESOURCE_ENERGY) > 0 }
+                    validator: (t) => { console.log(Game.getObjectById(t)); return false; t.store.getFreeCapacity(RESOURCE_ENERGY) > 0 }
                 },
                 upgrader: {
                     selector: () => _.max(
