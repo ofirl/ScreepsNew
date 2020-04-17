@@ -50,7 +50,7 @@ function run(creep) {
                                 s.structureType === STRUCTURE_EXTENSION) && s.store[RESOURCE_ENERGY] < s.store.getCapacity(RESOURCE_ENERGY)
                         }),
                         (s) => s.store.getCapacity(RESOURCE_ENERGY) - s.store[RESOURCE_ENERGY]),
-                    validator: (s) => s.store[RESOURCE_ENERGY] < s.store.getCapacity(RESOURCE_ENERGY), 
+                    validator: (s) => s.store[RESOURCE_ENERGY] < s.store.getCapacity(RESOURCE_ENERGY),
                 },
                 tower: {
                     selector: () => creep.room.find(FIND_MY_STRUCTURES, { filter: { structureType: STRUCTURE_TOWER } }),
