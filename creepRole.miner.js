@@ -1,15 +1,12 @@
 "use strict";
 
 function parts(energy) {
-    // return [WORK, WORK, WORK, MOVE];
-    console.log(energy);
     let parts = [WORK, MOVE];
     let extraParts = [WORK];
-    let extraPartsNum = Math.max(Math.floor((energy - 150) / 100), 4);
+    let extraPartsNum = Math.min(Math.floor((energy - 150) / 100), 4);
     for (let i = 0; i < extraPartsNum; i++)
         parts.push(...extraParts);
 
-        console.log(parts);
     return parts;
 }
 
