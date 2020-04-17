@@ -4,7 +4,13 @@ const STATE_COLLECT = 1;
 const STATE_DELIVER = 2;
 
 function parts(energy) {
-    return [CARRY, MOVE, CARRY, MOVE, CARRY, MOVE];
+    let parts = [CARRY, MOVE];
+    let extraParts = [CARRY, MOVE];
+    extraPartsNum = Math.max(Math.floor((energy - 150) / 100), 4);
+    for (let i = 0; i < extraPartsNum; i++)
+        parts.push(...extraParts);
+
+    return parts;
 }
 
 function init(creep) {

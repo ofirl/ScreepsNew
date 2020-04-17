@@ -1,7 +1,6 @@
 "use strict";
 
 function parts(energy) {
-    // TODO. Scale miner upto 5 work parts.
     let parts = [WORK, MOVE];
     let extraParts = [WORK];
     extraPartsNum = Math.max(Math.floor((energy - 150) / 100), 4);
