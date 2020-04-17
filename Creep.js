@@ -29,12 +29,12 @@ Creep.prototype.collectEnergy = function () {
             }),
             // validator: (creep) => creep.carry.energy > 0,
         },
-        // container2: {
-        //     selector: () => _.max(this.room.find(FIND_MY_STRUCTURES, {
-        //         filter: (structure) => structure.structureType === STRUCTURE_CONTAINER && structure.store[RESOURCE_ENERGY] > 0
-        //     }), (structure) => structure.store[RESOURCE_ENERGY]),
-        //     // validator: (creep) => creep.carry.energy > 0,
-        // },
+        container2: {
+            selector: () => _.max(this.room.find(FIND_MY_STRUCTURES, {
+                filter: (structure) => structure.structureType === STRUCTURE_CONTAINER && structure.store[RESOURCE_ENERGY] > 0
+            }), (structure) => structure.store[RESOURCE_ENERGY]),
+            // validator: (creep) => creep.carry.energy > 0,
+        },
     }, 'collectFrom');
 
     if (target) {
