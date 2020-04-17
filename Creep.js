@@ -7,8 +7,10 @@
 Creep.prototype.collectEnergy = function () {
     // Collect energy.
     let targetU;
-    if (this.memory.collectFrom)
+    if (this.memory.collectFrom) {
         targetU = this.memory.collectFrom;
+        targetU.target = Game.getObjectById(targetU.target.id);
+    }
     else
         targetU = this.getTargetUnion({
             energy: {
@@ -41,7 +43,7 @@ Creep.prototype.collectEnergy = function () {
             },
         }, 'collectFrom');
     if (targetU) {
-        this.memory.collectFrom = targetU;
+        this.memory.collectFrom = { target: targetU.target.id, type };
         let { target, type } = targetU;
         switch (type) {
             case 'energy':
