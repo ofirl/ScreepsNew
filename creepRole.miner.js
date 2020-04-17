@@ -1,6 +1,8 @@
 "use strict";
 
 function parts(energy) {
+    return [WORK, WORK, WORK, MOVE];
+    
     let parts = [WORK, MOVE];
     let extraParts = [WORK];
     let extraPartsNum = Math.max(Math.floor((energy - 150) / 100), 4);
