@@ -12,11 +12,6 @@ Creep.prototype.collectEnergy = function () {
                 filter: (resource) => resource.resourceType === RESOURCE_ENERGY && resource.amount >= this.store.getFreeCapacity[RESOURCE_ENERGY]
             }),
         },
-        // energy2: {
-        //     selector: () => _.max(this.pos.findClosestByPath(FIND_DROPPED_RESOURCES, {
-        //         filter: (resource) => resource.resourceType === RESOURCE_ENERGY
-        //     }), 'amount'),
-        // },
         energy2: {
             selector: () => this.pos.findClosestByPath(FIND_DROPPED_RESOURCES, {
                 filter: (resource) => resource.resourceType === RESOURCE_ENERGY
@@ -24,9 +19,21 @@ Creep.prototype.collectEnergy = function () {
         },
         miner: {
             selector: () => _.max(this.room.find(FIND_MY_CREEPS, {
-                filter: (creep) => creep.memory.role === 'miner' && creep.carry.energy > 0
+                filter: (creep) => creep.memory.role === 'miner' && creep.store[RESOURCE_ENERGY] > 0
             }), (creep) => creep.carry.energy),
-            validator: (creep) => creep.carry.energy > 0,
+            // validator: (creep) => creep.carry.energy > 0,
+        },
+        container: {
+            selector: () => this.room.findClosestByPath(FIND_MY_STRUCTURES, {
+                filter: (structure) => structure.structureType === STRUCTURE_CONTAINER && structure.store[RESOURCE_ENERGY] >= this.store.getFreeCapacity[RESOURCE_ENERGY]
+            }),
+            // validator: (creep) => creep.carry.energy > 0,
+        },
+        container2: {
+            selector: () => _.max(this.room.find(FIND_MY_STRUCTURES, {
+                filter: (structure) => structure.structureType === STRUCTURE_CONTAINER && structure.store[RESOURCE_ENERGY] > 0
+            }), (structure) => structure.store[RESOURCE_ENERGY]),
+            // validator: (creep) => creep.carry.energy > 0,
         },
     }, 'collectFrom');
     if (target) {
@@ -41,6 +48,13 @@ Creep.prototype.collectEnergy = function () {
             case 'miner': {
                 if (target.transfer(this) === ERR_NOT_IN_RANGE) {
                     this.moveTo(target, { visualizePathStyle: { stroke: '#ffffff' } });
+                }
+                break;
+            }
+            case 'container': 
+            case 'container2':{
+                if(creep.withdraw(target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(target);
                 }
                 break;
             }
