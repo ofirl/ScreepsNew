@@ -9,6 +9,7 @@ function parts(energy) {
     for (let i = 0; i < extraPartsNum; i++)
         parts.push(...extraParts);
 
+        console.log(parts);
     return parts;
 }
 
