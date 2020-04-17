@@ -18,6 +18,10 @@ const roomControllers = {
     base: require('roomController.base'),
 };
 
+const towerControllers = {
+    base: require('towerController.base'),
+};
+
 /**
  * 
  * @param {Room} creep 
@@ -49,7 +53,7 @@ module.exports.loop = function () {
                 '🛠️' + spawningCreep.memory.role,
                 spawn.pos.x + 1,
                 spawn.pos.y,
-                {align: 'left', opacity: 0.8});
+                { align: 'left', opacity: 0.8 });
         }
     }
 
@@ -60,10 +64,24 @@ module.exports.loop = function () {
         if (room.memory.controller) {
             roomController = roomControllers[room.memory.controller];
         }
-        if (!roomController) {
+        else {
             roomController = roomControllers.base;
         }
         roomController.run(room, creepRoles);
+
+        // Control towers
+        let towers = room.find(
+            FIND_MY_STRUCTURES, { filter: { structureType: STRUCTURE_TOWER } });
+        for (let tower in towers) {
+            let towerController = false;
+            if (room.memory.controller) {
+                roomController = towerControllers[room.memory.controller];
+            }
+            else {
+                roomController = towerControllers.base;
+            }
+            towerController.run(tower);
+        }
     }
 
     // Control creeps.
