@@ -66,7 +66,6 @@ RoomObject.prototype.getTargetUnion = function(types, prop = 'target') {
         let validator = types[type].validator || _.identity;
         let target = selector.call(this, this);
         if (target && validator(target)) {
-            console.log(target);
             this.memory[prop] = { tid: target.id, type: type };
             return { target: target, type: type };
         }
