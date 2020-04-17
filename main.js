@@ -72,7 +72,8 @@ module.exports.loop = function () {
         // Control towers
         let towers = room.find(
             FIND_MY_STRUCTURES, { filter: { structureType: STRUCTURE_TOWER } });
-        for (let tower in towers) {
+        for (let towerIdx in towers) {
+            let tower = towers[towerIdx];
             let towerController = false;
             if (room.memory.controller) {
                 towerController = towerControllers[room.memory.controller];

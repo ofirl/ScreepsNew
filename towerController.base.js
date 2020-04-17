@@ -1,6 +1,5 @@
 function run(tower) {
-    console.log(tower);
-    let hostiles = tower.room ? tower.room.find(FIND_HOSTILE_CREEPS) : [];
+    let hostiles = tower.room.find(FIND_HOSTILE_CREEPS);
     if (hostiles.length > 0) {
         let username = hostiles[0].owner.username;
         Game.notify(`User ${username} spotted in room ${tower.room.name}`);
