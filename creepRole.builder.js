@@ -101,7 +101,7 @@ function run(creep) {
 
             if (!repairTarget) {
                 const targets = creep.room.find(FIND_STRUCTURES, {
-                    filter: object => object.hits / object.hitsMax < 0.7
+                    filter: object => object.structureType !== STRUCTURE_WALL && object.hits / object.hitsMax < 0.7
                 });
 
                 targets.sort((a, b) => a.hits / a.hitsMax - b.hits / b.hitsMax);
