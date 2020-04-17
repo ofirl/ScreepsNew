@@ -44,7 +44,8 @@ Creep.prototype.collectEnergy = function () {
                 // validator: (creep) => creep.carry.energy > 0,
             },
         }, 'collectFrom');
-    if (targetU.target) {
+
+    if (targetU.target != null) {
         console.log(targetU.target);
         console.log(targetU.target.id);
         this.memory.collectFrom = { target: targetU.target.id, type: targetU.type };
