@@ -6,7 +6,6 @@ const STATE_BUILDING = 3;
 const STATE_REPAIRING = 4;
 
 function parts(energy) {
-    // TODO. Scale miner upto 5 work parts.
     let parts = [WORK, CARRY, MOVE];
     let extraParts = [WORK, CARRY, MOVE];
     let extraPartsNum = Math.min(Math.floor((energy - 200) / 200), 4);
