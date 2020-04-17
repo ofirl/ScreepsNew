@@ -88,6 +88,7 @@ function run(creep) {
             if (creep.store[RESOURCE_ENERGY] === 0) {
                 creep.say('🔄 collect');
                 creep.memory.state = STATE_COLLECTING;
+                delete creep.memory.rid;
                 run(creep);
                 return;
             }
