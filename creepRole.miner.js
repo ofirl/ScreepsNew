@@ -2,7 +2,13 @@
 
 function parts(energy) {
     // TODO. Scale miner upto 5 work parts.
-    return [WORK, WORK, CARRY, MOVE];
+    let parts = [WORK, MOVE];
+    let extraParts = [WORK];
+    extraPartsNum = Math.max(Math.floor((energy - 150) / 100), 4);
+    for (let i = 0; i < extraPartsNum; i++)
+        parts.push(...extraParts);
+
+    return parts;
 }
 
 function init(creep) {
