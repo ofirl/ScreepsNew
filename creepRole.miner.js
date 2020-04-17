@@ -3,7 +3,7 @@
 function parts(energy) {
     let parts = [WORK, MOVE];
     let extraParts = [WORK];
-    extraPartsNum = Math.max(Math.floor((energy - 150) / 100), 4);
+    let extraPartsNum = Math.max(Math.floor((energy - 150) / 100), 4);
     for (let i = 0; i < extraPartsNum; i++)
         parts.push(...extraParts);
 

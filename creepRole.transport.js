@@ -6,7 +6,7 @@ const STATE_DELIVER = 2;
 function parts(energy) {
     let parts = [CARRY, MOVE];
     let extraParts = [CARRY, MOVE];
-    extraPartsNum = Math.max(Math.floor((energy - 150) / 100), 4);
+    let extraPartsNum = Math.max(Math.floor((energy - 150) / 100), 4);
     for (let i = 0; i < extraPartsNum; i++)
         parts.push(...extraParts);
 
