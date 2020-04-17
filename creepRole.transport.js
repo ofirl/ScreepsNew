@@ -47,10 +47,10 @@ function run(creep) {
                     selector: () => _.max(
                         creep.room.find(FIND_MY_STRUCTURES, {
                             filter: (s) => (s.structureType === STRUCTURE_SPAWN ||
-                                s.structureType === STRUCTURE_EXTENSION) && s.energy < s.energyCapacity
+                                s.structureType === STRUCTURE_EXTENSION) && s.store[RESOURCE_ENERGY] < s.store.getCapacity(RESOURCE_ENERGY)
                         }),
-                        (s) => s.energyCapacity - s.energy),
-                    validator: (s) => s.energy < s.energyCapacity,
+                        (s) => s.store.getCapacity(RESOURCE_ENERGY) - s.store[RESOURCE_ENERGY]),
+                    validator: (s) => s.store[RESOURCE_ENERGY] < s.store.getCapacity(RESOURCE_ENERGY),
                 },
                 tower: {
                     selector: () => creep.room.find(FIND_MY_STRUCTURES, { filter: { structureType: STRUCTURE_TOWER } }),
@@ -59,10 +59,10 @@ function run(creep) {
                 upgrader: {
                     selector: () => _.max(
                         creep.room.find(FIND_MY_CREEPS, {
-                            filter: (c) => c.memory.role === 'upgrader' && _.sum(c.carry) < c.carryCapacity
+                            filter: (c) => c.memory.role === 'upgrader' && _.sum(c.store[RESOURCE_ENERGY]) < c.store.getCapacity(RESOURCE_ENERGY)
                         }),
-                        (c) => c.carryCapacity - _.sum(c.carry)),
-                    validator: (c) => _.sum(c.carry) < c.carryCapacity,
+                        (c) => c.store.getCapacity(RESOURCE_ENERGY) - _.sum(c.store[RESOURCE_ENERGY])),
+                    validator: (c) => _.sum(c.store[RESOURCE_ENERGY]) < c.store.getCapacity(RESOURCE_ENERGY),
                 },
             }, 'deliverTo');
             let ret = creep.transfer(target, RESOURCE_ENERGY);
