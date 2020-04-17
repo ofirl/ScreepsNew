@@ -49,25 +49,22 @@ Creep.prototype.collectEnergy = function () {
         let { target, type } = targetU;
         switch (type) {
             case 'energy':
-            case 'energy2': {
+            case 'energy2':
                 if (this.pickup(target) === ERR_NOT_IN_RANGE) {
                     this.moveTo(target, { visualizePathStyle: { stroke: '#ffffff' } });
                 }
                 break;
-            }
-            case 'miner': {
+            case 'miner':
                 if (target.transfer(this) === ERR_NOT_IN_RANGE) {
                     this.moveTo(target, { visualizePathStyle: { stroke: '#ffffff' } });
                 }
                 break;
-            }
             case 'container':
-            case 'container2': {
+            case 'container2':
                 if (this.withdraw(target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                     this.moveTo(target);
                 }
                 break;
-            }
         }
     }
 };
