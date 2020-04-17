@@ -66,8 +66,10 @@ function run(creep) {
                 },
             }, 'deliverTo');
             let ret = creep.transfer(target, RESOURCE_ENERGY);
-            if (ret === ERR_NOT_IN_RANGE)
+            if (ret === ERR_NOT_IN_RANGE) {
                 creep.moveTo(target, { visualizePathStyle: { stroke: '#ffffff' } });
+                return;
+            }
 
             delete creep.memory.deliverTo;
             return;
