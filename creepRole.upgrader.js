@@ -64,9 +64,9 @@ function run(creep) {
             return;
         case STATE_UPGRADING:
             if (creep.carry.energy === 0) {
-                creep.memory.state = STATE_COLLECTING;
-                creep.say('🔄 collect');
-                run(creep);
+                // creep.memory.state = STATE_COLLECTING;
+                // creep.say('🔄 collect');
+                // run(creep);
                 return;
             }
 
