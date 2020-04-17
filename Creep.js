@@ -63,8 +63,8 @@ Creep.prototype.collectEnergy = function () {
             }
             case 'container':
             case 'container2': {
-                if (creep.withdraw(target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(target);
+                if (this.withdraw(target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                    this.moveTo(target);
                 }
                 break;
             }
