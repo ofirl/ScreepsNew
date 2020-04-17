@@ -6,48 +6,38 @@
 
 Creep.prototype.collectEnergy = function () {
     // Collect energy.
-    let targetU;
-    if (this.memory.collectFrom) {
-        targetU = this.memory.collectFrom;
-        targetU.target = Game.getObjectById(targetU.tid);
-        if (!targetU.target)
-            delete this.memory.collectFrom;
-    }
-    else
-        targetU = this.getTargetUnion({
-            energy: {
-                selector: () => this.pos.findClosestByPath(FIND_DROPPED_RESOURCES, {
-                    filter: (resource) => resource.resourceType === RESOURCE_ENERGY && resource.amount >= this.store.getFreeCapacity[RESOURCE_ENERGY]
-                }),
-            },
-            energy2: {
-                selector: () => this.pos.findClosestByPath(FIND_DROPPED_RESOURCES, {
-                    filter: (resource) => resource.resourceType === RESOURCE_ENERGY
-                }),
-            },
-            // miner: {
-            //     selector: () => _.max(this.room.find(FIND_MY_CREEPS, {
-            //         filter: (creep) => creep.memory.role === 'miner' && creep.store[RESOURCE_ENERGY] > 0
-            //     }), (creep) => creep.carry.energy),
-            //     // validator: (creep) => creep.carry.energy > 0,
-            // },
-            container: {
-                selector: () => this.pos.findClosestByPath(FIND_MY_STRUCTURES, {
-                    filter: (structure) => structure.structureType === STRUCTURE_CONTAINER && structure.store[RESOURCE_ENERGY] >= this.store.getFreeCapacity[RESOURCE_ENERGY]
-                }),
-                // validator: (creep) => creep.carry.energy > 0,
-            },
-            container2: {
-                selector: () => _.max(this.room.find(FIND_MY_STRUCTURES, {
-                    filter: (structure) => structure.structureType === STRUCTURE_CONTAINER && structure.store[RESOURCE_ENERGY] > 0
-                }), (structure) => structure.store[RESOURCE_ENERGY]),
-                // validator: (creep) => creep.carry.energy > 0,
-            },
-        }, 'collectFrom');
+    let { target, type } = this.getTargetUnion({
+        energy: {
+            selector: () => this.pos.findClosestByPath(FIND_DROPPED_RESOURCES, {
+                filter: (resource) => resource.resourceType === RESOURCE_ENERGY && resource.amount >= this.store.getFreeCapacity[RESOURCE_ENERGY]
+            }),
+        },
+        energy2: {
+            selector: () => this.pos.findClosestByPath(FIND_DROPPED_RESOURCES, {
+                filter: (resource) => resource.resourceType === RESOURCE_ENERGY
+            }),
+        },
+        // miner: {
+        //     selector: () => _.max(this.room.find(FIND_MY_CREEPS, {
+        //         filter: (creep) => creep.memory.role === 'miner' && creep.store[RESOURCE_ENERGY] > 0
+        //     }), (creep) => creep.carry.energy),
+        //     // validator: (creep) => creep.carry.energy > 0,
+        // },
+        container: {
+            selector: () => this.pos.findClosestByPath(FIND_MY_STRUCTURES, {
+                filter: (structure) => structure.structureType === STRUCTURE_CONTAINER && structure.store[RESOURCE_ENERGY] >= this.store.getFreeCapacity[RESOURCE_ENERGY]
+            }),
+            // validator: (creep) => creep.carry.energy > 0,
+        },
+        container2: {
+            selector: () => _.max(this.room.find(FIND_MY_STRUCTURES, {
+                filter: (structure) => structure.structureType === STRUCTURE_CONTAINER && structure.store[RESOURCE_ENERGY] > 0
+            }), (structure) => structure.store[RESOURCE_ENERGY]),
+            // validator: (creep) => creep.carry.energy > 0,
+        },
+    }, 'collectFrom');
 
-    if (targetU.target) {
-        this.memory.collectFrom = { tid: targetU.target.id, type: targetU.type };
-        let { target, type } = targetU;
+    if (target) {
         switch (type) {
             case 'energy':
             case 'energy2':
