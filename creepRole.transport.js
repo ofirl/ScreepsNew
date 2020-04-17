@@ -44,12 +44,12 @@ function run(creep) {
             }
             let { target, type } = creep.getTargetUnion({
                 spawn: {
-                    selector: () => _.max(
-                        creep.room.find(FIND_MY_STRUCTURES, {
+                    selector: () => //_.max(
+                        creep.pos.findClosestByRange(FIND_MY_STRUCTURES, {
                             filter: (s) => (s.structureType === STRUCTURE_SPAWN || s.structureType === STRUCTURE_EXTENSION) &&
-                                s.store[RESOURCE_ENERGY] < s.store.getCapacity(RESOURCE_ENERGY) || [0]
-                        }),
-                        (s) => s.store.getCapacity(RESOURCE_ENERGY) - s.store[RESOURCE_ENERGY]),
+                                s.store[RESOURCE_ENERGY] < s.store.getCapacity(RESOURCE_ENERGY)
+                        })
+                        //, (s) => s.store.getCapacity(RESOURCE_ENERGY) - s.store[RESOURCE_ENERGY]),
                     // validator: (s) => s.store && s.store[RESOURCE_ENERGY] < s.store.getCapacity(RESOURCE_ENERGY),
                 },
                 tower: {
