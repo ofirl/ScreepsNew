@@ -50,11 +50,13 @@ function run(creep) {
                                 s.structureType === STRUCTURE_EXTENSION) && s.store[RESOURCE_ENERGY] < s.store.getCapacity(RESOURCE_ENERGY)
                         }),
                         (s) => s.store.getCapacity(RESOURCE_ENERGY) - s.store[RESOURCE_ENERGY]),
-                    validator: (s) => s.store && s.store[RESOURCE_ENERGY] < s.store.getCapacity(RESOURCE_ENERGY),
+                    // validator: (s) => s.store && s.store[RESOURCE_ENERGY] < s.store.getCapacity(RESOURCE_ENERGY),
                 },
                 tower: {
-                    selector: () => creep.room.find(FIND_MY_STRUCTURES, { filter: { structureType: STRUCTURE_TOWER } }),
-                    validator: (t) => { console.log(t); return false; t.store.getFreeCapacity(RESOURCE_ENERGY) > 0 }
+                    selector: () => creep.room.find(FIND_MY_STRUCTURES, { 
+                        filter: (s) => s.structureType === STRUCTURE_TOWER && s.store && s.store.getFreeCapacity(RESOURCE_ENERGY) > 0
+                    }),
+                    // validator: (t) => t.store.getFreeCapacity(RESOURCE_ENERGY) > 0
                 },
                 upgrader: {
                     selector: () => _.max(
