@@ -12,11 +12,6 @@ Creep.prototype.collectEnergy = function () {
                 filter: (resource) => resource.resourceType === RESOURCE_ENERGY && resource.amount >= this.store.getFreeCapacity[RESOURCE_ENERGY]
             }),
         },
-        energy2: {
-            selector: () => this.pos.findClosestByPath(FIND_DROPPED_RESOURCES, {
-                filter: (resource) => resource.resourceType === RESOURCE_ENERGY
-            }),
-        },
         // miner: {
         //     selector: () => _.max(this.room.find(FIND_MY_CREEPS, {
         //         filter: (creep) => creep.memory.role === 'miner' && creep.store[RESOURCE_ENERGY] > 0
@@ -28,6 +23,11 @@ Creep.prototype.collectEnergy = function () {
                 filter: (structure) => structure.structureType === STRUCTURE_CONTAINER && structure.store[RESOURCE_ENERGY] >= this.store.getFreeCapacity[RESOURCE_ENERGY]
             }),
             // validator: (creep) => creep.carry.energy > 0,
+        },
+        energy2: {
+            selector: () => this.pos.findClosestByPath(FIND_DROPPED_RESOURCES, {
+                filter: (resource) => resource.resourceType === RESOURCE_ENERGY
+            }),
         },
         container2: {
             //         selector: () => this.pos.findClosestByPath(FIND_STRUCTURES, {
