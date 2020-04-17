@@ -52,10 +52,10 @@ function run(creep) {
                         (s) => s.store.getCapacity(RESOURCE_ENERGY) - s.store[RESOURCE_ENERGY]),
                     validator: (s) => s.store[RESOURCE_ENERGY] < s.store.getCapacity(RESOURCE_ENERGY),
                 },
-                tower: {
-                    selector: () => creep.room.find(FIND_MY_STRUCTURES, { filter: { structureType: STRUCTURE_TOWER } }),
-                    validator: (t) => t.store.getFreeCapacity(RESOURCE_ENERGY) > 0
-                },
+                // tower: {
+                //     selector: () => creep.room.find(FIND_MY_STRUCTURES, { filter: { structureType: STRUCTURE_TOWER } }),
+                //     validator: (t) => t.store.getFreeCapacity(RESOURCE_ENERGY) > 0
+                // },
                 upgrader: {
                     selector: () => _.max(
                         creep.room.find(FIND_MY_CREEPS, {
