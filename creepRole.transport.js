@@ -52,6 +52,10 @@ function run(creep) {
                         (s) => s.energyCapacity - s.energy),
                     validator: (s) => s.energy < s.energyCapacity,
                 },
+                tower: {
+                    selector: () => creep.room.find(FIND_MY_STRUCTURES, { filter: { structureType: STRUCTURE_TOWER } }),
+                    validator: (t) => t.store.getFreeCapacity(RESOURCE_ENERGY) > 0
+                },
                 upgrader: {
                     selector: () => _.max(
                         creep.room.find(FIND_MY_CREEPS, {
