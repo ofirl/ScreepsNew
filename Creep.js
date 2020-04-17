@@ -9,7 +9,7 @@ Creep.prototype.collectEnergy = function () {
     let targetU;
     if (this.memory.collectFrom) {
         targetU = this.memory.collectFrom;
-        targetU.target = Game.getObjectById(targetU.tid);
+        targetU.target = Game.getObjectById(targetU.target);
         if (!targetU.target)
             delete this.memory.collectFrom;
     }
@@ -45,7 +45,7 @@ Creep.prototype.collectEnergy = function () {
             },
         }, 'collectFrom');
     if (targetU.target) {
-        this.memory.collectFrom = { tid: targetU.target.id, type: targetU.type };
+        this.memory.collectFrom = { target: target.id, type: targetU.type };
         let { target, type } = targetU;
         switch (type) {
             case 'energy':
