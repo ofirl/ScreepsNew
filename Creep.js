@@ -38,7 +38,7 @@ Creep.prototype.collectEnergy = function () {
             selector: () => _.max(this.room.find(FIND_STRUCTURES, {
                 filter: (structure) => structure.structureType === STRUCTURE_CONTAINER && structure.store[RESOURCE_ENERGY] > 0
             }), (structure) => structure.store[RESOURCE_ENERGY]),
-            // validator: (creep) => creep.carry.energy > 0,
+            validator: s => s.store[RESOURCE_ENERGY] > 0
         },
     }, 'collectFrom');
 
