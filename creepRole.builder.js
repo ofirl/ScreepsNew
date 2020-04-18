@@ -119,6 +119,11 @@ function run(creep) {
             }
 
             if (repairTarget) {
+                if (repairTarget.hits === repairTarget.hitsMax) {
+                    delete creep.memory.rid;
+                    return;
+                }
+
                 if (creep.repair(repairTarget) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(repairTarget);
                 }
