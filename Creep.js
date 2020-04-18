@@ -22,7 +22,7 @@ Creep.prototype.collectEnergy = function () {
             selector: () => this.pos.findClosestByPath(FIND_STRUCTURES, {
                 filter: (structure) => structure.structureType === STRUCTURE_CONTAINER && structure.store[RESOURCE_ENERGY] >= this.store.getFreeCapacity(RESOURCE_ENERGY)
             }),
-            // validator: (creep) => creep.carry.energy > 0,
+            validator: s => s.store[RESOURCE_ENERGY] > 0
         },
         energy2: {
             selector: () => this.pos.findClosestByPath(FIND_DROPPED_RESOURCES, {
