@@ -134,6 +134,8 @@ function run(creep) {
                 return;
             }
         }
+        default:
+            creep.memory.state = STATE_COLLECTING;
     }
 }
 
