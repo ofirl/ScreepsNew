@@ -84,7 +84,7 @@ function run(creep) {
                     creep.memory.state = STATE_COLLECTING;
                 }
 
-                run(creep);
+                // run(creep);
                 return;
             }
 
@@ -130,7 +130,7 @@ function run(creep) {
             }
             else {
                 creep.memory.state = STATE_BUILDING;
-                run(creep);
+                // run(creep);
                 return;
             }
         }
