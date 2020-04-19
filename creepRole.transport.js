@@ -76,6 +76,9 @@ function run(creep) {
             delete creep.memory.deliverTo;
             return;
         }
+        default: {
+            creep.memory.state = STATE_COLLECT;
+        }
     }
 }
 
