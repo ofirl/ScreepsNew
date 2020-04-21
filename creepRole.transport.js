@@ -64,7 +64,7 @@ function run(creep) {
                             filter: (c) => c.memory.role === 'upgrader' && c.store[RESOURCE_ENERGY] < c.store.getCapacity(RESOURCE_ENERGY)
                         }),
                         (c) => c.store.getCapacity(RESOURCE_ENERGY) - c.store[RESOURCE_ENERGY]),
-                    validator: (c) => c.store[RESOURCE_ENERGY] < c.store.getCapacity(RESOURCE_ENERGY),
+                    // validator: (c) => c.store[RESOURCE_ENERGY] < c.store.getCapacity(RESOURCE_ENERGY),
                 },
             }, 'deliverTo');
             let ret = creep.transfer(target, RESOURCE_ENERGY);
