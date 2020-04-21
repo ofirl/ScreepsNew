@@ -27,6 +27,9 @@ function init(creep) {
 
 function run(creep) {
     let source = Game.getObjectById(creep.memory.sourceId);
+    if (!source)
+        init(creep);
+
     if (creep.harvest(source) === ERR_NOT_IN_RANGE) {
         creep.moveTo(source);
     }
