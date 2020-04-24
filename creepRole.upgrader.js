@@ -17,7 +17,7 @@ function parts(energy) {
 function init(creep) {
     let containers = creep.room.controller.pos.findInRange(FIND_STRUCTURES, {
         filter: (s) => s.structureType === STRUCTURE_CONTAINER || s.structureType === STRUCTURE_STORAGE
-    }, 3);
+    }, 4);
     if (containers.length > 0) {
         let container = _.max(containers, (c) => c.store.energy);
         creep.memory.tid = container.id;
