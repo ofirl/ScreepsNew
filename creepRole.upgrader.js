@@ -77,6 +77,9 @@ function run(creep) {
 
             creep.upgradeController(creep.room.controller);
             return;
+        default:
+            init(creep);
+            return;
     }
 }
 
