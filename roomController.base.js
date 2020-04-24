@@ -30,7 +30,7 @@ module.exports = {
                 },
                 upgrader: {
                     role: 'upgrader',
-                    min: room.controller.level,
+                    min: Math.min(room.controller.level, 4),
                 },
                 builder: {
                     role: 'builder',
