@@ -49,7 +49,7 @@ function run(creep) {
                             filter: (s) => (s.structureType === STRUCTURE_SPAWN || s.structureType === STRUCTURE_EXTENSION) &&
                                 s.store[RESOURCE_ENERGY] < s.store.getCapacity(RESOURCE_ENERGY)
                         })
-                        //, (s) => s.store.getCapacity(RESOURCE_ENERGY) - s.store[RESOURCE_ENERGY]),
+                    //, (s) => s.store.getCapacity(RESOURCE_ENERGY) - s.store[RESOURCE_ENERGY]),
                     // validator: (s) => s.store && s.store[RESOURCE_ENERGY] < s.store.getCapacity(RESOURCE_ENERGY),
                 },
                 tower: {
@@ -64,6 +64,13 @@ function run(creep) {
                             filter: (c) => c.memory.role === 'upgrader' && c.store[RESOURCE_ENERGY] < c.store.getCapacity(RESOURCE_ENERGY)
                         }),
                         (c) => c.store.getCapacity(RESOURCE_ENERGY) - c.store[RESOURCE_ENERGY]),
+                    // validator: (c) => c.store[RESOURCE_ENERGY] < c.store.getCapacity(RESOURCE_ENERGY),
+                },
+                storage: {
+                    selector: () =>
+                        creep.room.find(FIND_MY_STRUCTURES, {
+                            filter: (s) => s.structureType === STRUCTURE_STORAGE && s.store[RESOURCE_ENERGY] < s.store.getCapacity(RESOURCE_ENERGY)
+                        }),
                     // validator: (c) => c.store[RESOURCE_ENERGY] < c.store.getCapacity(RESOURCE_ENERGY),
                 },
             }, 'deliverTo');
