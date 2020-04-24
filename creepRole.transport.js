@@ -60,7 +60,7 @@ function run(creep) {
                 },
                 storage: {
                     selector: () =>
-                        creep.room.findClosestByRange(FIND_STRUCTURES, {
+                        creep.pos.findClosestByRange(FIND_STRUCTURES, {
                             filter: (s) => s.structureType === STRUCTURE_STORAGE && s.store[RESOURCE_ENERGY] < s.store.getCapacity(RESOURCE_ENERGY)
                         }),
                     // validator: (c) => c.store[RESOURCE_ENERGY] < c.store.getCapacity(RESOURCE_ENERGY),
