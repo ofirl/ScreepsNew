@@ -45,12 +45,12 @@ function run(creep) {
             if (creep.memory.tid)
                 target = Game.getObjectById(creep.memory.tid);
 
-            console.log(target);
+            console.log(creep.memory.tid);
 
-            if (!target) {
-                // The target was destroyed.
-                delete creep.memory.tid;
-            }
+            // if (!target) {
+            //     // The target was destroyed.
+            //     delete creep.memory.tid;
+            // }
             if (target) {
                 // if (creep.pos !== target.pos) {
                 if (!creep.inRangeTo(target, 0)) {
