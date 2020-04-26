@@ -50,7 +50,7 @@ function run(creep) {
             // }
             if (target) {
                 // if (creep.pos !== target.pos) {
-                if (!creep.inRangeTo(target, 0)) {
+                if (!creep.pos.inRangeTo(target, 0)) {
                     // Move so we adjacent to storage.
                     creep.moveTo(target.pos);
                 } else {
