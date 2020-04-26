@@ -78,16 +78,22 @@ function run(creep) {
             let collectFrom = creep.pos.findInRange(FIND_MY_STRUCTURES, 1, {
                 filter: (s) => s.structureType === STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] > 0
             });
+            if (collectFrom && collectFrom.length) {
+                collectFrom = collectFrom[0];
+            }
+            else
+                collectFrom = null;
+
             // let collectFrom = Game.getObjectById(creep.memory.tid);
             if (collectFrom) {
                 creep.withdraw(collectFrom, RESOURCE_ENERGY);
             }
-            else {
-                // The target was destroyed.
-                delete creep.memory.tid;
+            // else {
+            //     // The target was destroyed.
+            //     delete creep.memory.tid;
 
-                // We wait for someone to fill us up.
-            }
+            //     // We wait for someone to fill us up.
+            // }
             return;
         case STATE_UPGRADING:
             if (creep.carry.energy === 0) {
