@@ -29,8 +29,10 @@ function init(creep) {
         filter: (f) => f.color === COLOR_YELLOW && f.secondaryColor === COLOR_GREEN && (!f.memory.creep || !Game.getObjectById(f.memory.creep))
     });
 
-    if (flag && flag.length > 0)
+    if (flag && flag.length > 0) {
         creep.memory.tid = flag.id
+        flag.memory.creep = creep.id
+    }
 }
 
 function run(creep) {
