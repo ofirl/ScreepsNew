@@ -44,12 +44,15 @@ function run(creep) {
             if (creep.memory.tid)
                 target = Game.getObjectById(creep.memory.tid);
 
+            console.l
+
             if (!target) {
                 // The target was destroyed.
                 delete creep.memory.tid;
             }
             if (target) {
-                if (!creep.inRangeTo(target, 0)) {
+                if (creep.pos !== target.pos) {
+                    // if (!creep.inRangeTo(target, 0)) {
                     // Move so we adjacent to storage.
                     creep.moveTo(target);
                 } else {
