@@ -30,8 +30,8 @@ function init(creep) {
     });
 
     if (flag && flag.length > 0) {
-        creep.memory.tid = flag.id
-        flag.memory.creep = creep.id
+        creep.memory.tid = flag[0].id
+        flag[0].memory.creep = creep.id
     }
 }
 
