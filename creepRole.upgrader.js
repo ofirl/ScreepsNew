@@ -31,6 +31,7 @@ function init(creep) {
 
     if (flag && flag.length > 0) {
         console.log('upgrader flags found: ' + flag.length);
+        console.log(flag[0])
         creep.memory.tid = flag[0].id
         flag[0].memory.creep = creep.id
     }
@@ -44,8 +45,6 @@ function run(creep) {
             let target;
             if (creep.memory.tid)
                 target = Game.getObjectById(creep.memory.tid);
-
-            console.log(creep.memory.tid);
 
             // if (!target) {
             //     // The target was destroyed.
