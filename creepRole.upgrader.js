@@ -15,9 +15,9 @@ function parts(energy) {
 }
 
 function init(creep) {
-    // let containers = creep.room.controller.pos.findInRange(FIND_STRUCTURES, {
+    // let containers = creep.room.controller.pos.findInRange(FIND_STRUCTURES, 4, {
     //     filter: (s) => s.structureType === STRUCTURE_CONTAINER || s.structureType === STRUCTURE_STORAGE
-    // }, 4);
+    // });
     // if (containers.length > 0) {
     //     let container = _.max(containers, (c) => c.store.energy);
     //     creep.memory.tid = container.id;
@@ -44,7 +44,7 @@ function run(creep) {
             if (creep.memory.tid)
                 target = Game.getObjectById(creep.memory.tid);
 
-            // console.log(target);
+            console.log(target);
 
             if (!target) {
                 // The target was destroyed.
@@ -54,7 +54,7 @@ function run(creep) {
                 // if (creep.pos !== target.pos) {
                 if (!creep.inRangeTo(target, 0)) {
                     // Move so we adjacent to storage.
-                    creep.moveTo(target);
+                    creep.moveTo(target.pos);
                 } else {
                     creep.memory.state = STATE_COLLECTING;
                 }

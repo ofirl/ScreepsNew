@@ -58,11 +58,14 @@ function run(creep) {
                     }),
                     // validator: (t) => t.store.getFreeCapacity(RESOURCE_ENERGY) > 0
                 },
-                // upgraderContainer: {
-                //     selector: () => creep.room.controller.pos.findInRange(FIND_STRUCTURES, 4, {
-                //         filter: (s) => (s.structureType === STRUCTURE_CONTAINER || s.structureType === STRUCTURE_STORAGE) && s.store[RESOURCE_ENERGY] < s.store.getCapacity(RESOURCE_ENERGY)
-                //     })
-                // },
+                upgraderContainer: {
+                    selector: () => _.max(
+                        creep.room.controller.pos.findInRange(FIND_STRUCTURES, 3, {
+                            filter: (s) => (s.structureType === STRUCTURE_CONTAINER || s.structureType === STRUCTURE_STORAGE) && s.store[RESOURCE_ENERGY] < s.store.getCapacity(RESOURCE_ENERGY)
+                        }),
+                        (s) => (s) => s.store.getCapacity(RESOURCE_ENERGY) - s.store[RESOURCE_ENERGY]
+                    )
+                },
                 upgrader: {
                     selector: () => _.max(
                         creep.room.find(FIND_MY_CREEPS, {
