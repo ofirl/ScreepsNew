@@ -20,7 +20,7 @@ Creep.prototype.collectEnergy = function () {
         // },
         container: {
             selector: () => this.pos.findClosestByPath(FIND_STRUCTURES, {
-                filter: (structure) => structure.structureType === STRUCTURE_CONTAINER && structure.store[RESOURCE_ENERGY] > 0 && structure.store[RESOURCE_ENERGY] >= this.store.getFreeCapacity(RESOURCE_ENERGY)
+                filter: (s) => s.structureType === STRUCTURE_CONTAINER && s.id !== this.room.memory.upgradeContainer && s.store[RESOURCE_ENERGY] > 0 && s.store[RESOURCE_ENERGY] >= this.store.getFreeCapacity(RESOURCE_ENERGY)
             }),
             // validator: s => s.store[RESOURCE_ENERGY] > 0
         },
@@ -36,7 +36,7 @@ Creep.prototype.collectEnergy = function () {
             //         }),
             // // validator: (creep) => creep.carry.energy > 0,
             selector: () => _.max(this.room.find(FIND_STRUCTURES, {
-                filter: (structure) => structure.structureType === STRUCTURE_CONTAINER && structure.store[RESOURCE_ENERGY] > 0
+                filter: (s) => s.structureType === STRUCTURE_CONTAINER && s.id !== this.room.memory.upgradeContainer && s.store[RESOURCE_ENERGY] > 0
             }), (structure) => structure.store[RESOURCE_ENERGY]),
             // validator: s => s.store[RESOURCE_ENERGY] > 0
         },
