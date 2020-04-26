@@ -66,19 +66,19 @@ function run(creep) {
                         return structures && structures.length ? structures[0] : null
                     }
                 },
+                storage: {
+                    selector: () =>
+                        creep.pos.findClosestByRange(FIND_STRUCTURES, {
+                            filter: (s) => s.structureType === STRUCTURE_STORAGE && s.store[RESOURCE_ENERGY] < s.store.getCapacity(RESOURCE_ENERGY)
+                        }),
+                    // validator: (c) => c.store[RESOURCE_ENERGY] < c.store.getCapacity(RESOURCE_ENERGY),
+                },
                 upgrader: {
                     selector: () => _.max(
                         creep.room.find(FIND_MY_CREEPS, {
                             filter: (c) => c.memory.role === 'upgrader' && c.store[RESOURCE_ENERGY] < c.store.getCapacity(RESOURCE_ENERGY)
                         }),
                         (c) => c.store.getCapacity(RESOURCE_ENERGY) - c.store[RESOURCE_ENERGY]),
-                    // validator: (c) => c.store[RESOURCE_ENERGY] < c.store.getCapacity(RESOURCE_ENERGY),
-                },
-                storage: {
-                    selector: () =>
-                        creep.pos.findClosestByRange(FIND_STRUCTURES, {
-                            filter: (s) => s.structureType === STRUCTURE_STORAGE && s.store[RESOURCE_ENERGY] < s.store.getCapacity(RESOURCE_ENERGY)
-                        }),
                     // validator: (c) => c.store[RESOURCE_ENERGY] < c.store.getCapacity(RESOURCE_ENERGY),
                 },
             }, 'deliverTo');
