@@ -40,6 +40,7 @@ function run(creep) {
     switch (creep.memory.state) {
         case STATE_MOVING:
             // Move to controller even without energy, as we have transport deliver it.
+            console.log('upgrader target: ' + creep.memory.tid);
             let target;
             if (creep.memory.tid)
                 target = Game.getObjectById(creep.memory.tid);
