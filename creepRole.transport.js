@@ -60,7 +60,7 @@ function run(creep) {
                 },
                 upgraderContainer: {
                     selector: () => creep.room.controller.pos.findInRange(FIND_STRUCTURES, 3, {
-                        filter: (s) => s.store[RESOURCE_ENERGY] < s.store.getCapacity(RESOURCE_ENERGY) && (s.structureType === STRUCTURE_CONTAINER || s.structureType === STRUCTURE_STORAGE)
+                        filter: (s) => s.store && s.store[RESOURCE_ENERGY] < s.store.getCapacity(RESOURCE_ENERGY) && (s.structureType === STRUCTURE_CONTAINER || s.structureType === STRUCTURE_STORAGE)
                     })
                 },
                 upgrader: {
