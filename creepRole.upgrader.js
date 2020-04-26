@@ -30,6 +30,7 @@ function init(creep) {
     });
 
     if (flag && flag.length > 0) {
+        console.log('upgrader flags found: ' + flag.length);
         creep.memory.tid = flag[0].id
         flag[0].memory.creep = creep.id
     }
@@ -70,10 +71,10 @@ function run(creep) {
                 return;
             }
 
-            // let collectFrom = creep.pos.findInRange(FIND_MY_STRUCTURES, 1, {
-            //     filter: (s) => s.structureType === STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] > 0
-            // });
-            let collectFrom = Game.getObjectById(creep.memory.tid);
+            let collectFrom = creep.pos.findInRange(FIND_MY_STRUCTURES, 1, {
+                filter: (s) => s.structureType === STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] > 0
+            });
+            // let collectFrom = Game.getObjectById(creep.memory.tid);
             if (collectFrom) {
                 creep.withdraw(collectFrom, RESOURCE_ENERGY);
             }
