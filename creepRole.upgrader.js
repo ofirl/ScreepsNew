@@ -15,14 +15,22 @@ function parts(energy) {
 }
 
 function init(creep) {
-    let containers = creep.room.controller.pos.findInRange(FIND_STRUCTURES, {
-        filter: (s) => s.structureType === STRUCTURE_CONTAINER || s.structureType === STRUCTURE_STORAGE
-    }, 4);
-    if (containers.length > 0) {
-        let container = _.max(containers, (c) => c.store.energy);
-        creep.memory.tid = container.id;
-    }
+    // let containers = creep.room.controller.pos.findInRange(FIND_STRUCTURES, {
+    //     filter: (s) => s.structureType === STRUCTURE_CONTAINER || s.structureType === STRUCTURE_STORAGE
+    // }, 4);
+    // if (containers.length > 0) {
+    //     let container = _.max(containers, (c) => c.store.energy);
+    //     creep.memory.tid = container.id;
+    // }
+
     creep.memory.state = STATE_MOVING;
+
+    let flag = creep.room.find(FIND_FLAGS, {
+        filter: (f) => f.color === COLOR_YELLOW && f.secondaryColor === COLOR_GREEN && (!f.memory.creep || !Game.getObjectById(f.memory.creep))
+    });
+
+    if (flag && flag.length > 0)
+        creep.memory.tid = flag.id
 }
 
 function run(creep) {
@@ -35,7 +43,7 @@ function run(creep) {
                 delete creep.memory.tid;
             }
             if (target) {
-                if (!creep.inRangeTo(target, 2)) {
+                if (!creep.inRangeTo(target, 0)) {
                     // Move so we adjacent to storage.
                     creep.moveTo(target);
                 } else {
@@ -57,15 +65,19 @@ function run(creep) {
                 return;
             }
 
-            let collectFrom = Game.getObjectById(creep.memory.tid);
+            let collectFrom = creep.pos.findInRange(FIND_MY_STRUCTURES, 1, {
+                filter: (s) => s.structureType === STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] > 0
+            });
+            // let collectFrom = Game.getObjectById(creep.memory.tid);
             if (collectFrom) {
                 creep.withdraw(collectFrom, RESOURCE_ENERGY);
-            } else {
-                // The target was destroyed.
-                delete creep.memory.tid;
-
-                // We wait for someone to fill us up.
             }
+            // else {
+            //     // The target was destroyed.
+            //     delete creep.memory.tid;
+
+            //     // We wait for someone to fill us up.
+            // }
             return;
         case STATE_UPGRADING:
             if (creep.carry.energy === 0) {
