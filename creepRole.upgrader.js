@@ -75,6 +75,7 @@ function run(creep) {
             let collectFrom = creep.pos.findInRange(FIND_MY_STRUCTURES, 1, {
                 filter: (s) => s.structureType === STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] > 0
             });
+            console.log(collectFrom);
             if (collectFrom && collectFrom.length) {
                 collectFrom = collectFrom[0];
             }
