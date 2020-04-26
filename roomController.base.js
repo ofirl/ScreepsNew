@@ -17,6 +17,14 @@ module.exports = {
         }
 
         if (!room.memory.spawnSettings || room.memory.spwanSettingsRefresh === Game.time) {
+            if (!room.memory.upgradeContainer) {
+                let structures = room.controller.pos.findInRange(FIND_STRUCTURES, 3, {
+                    filter: (s) => s.structureType === STRUCTURE_CONTAINER || s.structureType === STRUCTURE_STORAGE
+                });
+
+                room.memory.upgradeContainer = structures && structures.length ? structures[0] : null;
+            }
+
             room.memory.spwanSettingsRefresh = Game.time + 100;
             room.memory.spawnSettings = {
                 miner: {
