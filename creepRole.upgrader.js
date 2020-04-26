@@ -37,7 +37,10 @@ function run(creep) {
     switch (creep.memory.state) {
         case STATE_MOVING:
             // Move to controller even without energy, as we have transport deliver it.
-            let target = Game.getObjectById(creep.memory.tid);
+            let target;
+            if (creep.memory.tid)
+                target = Game.getObjectById(creep.memory.tid);
+
             if (!target) {
                 // The target was destroyed.
                 delete creep.memory.tid;
