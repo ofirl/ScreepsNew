@@ -82,6 +82,7 @@ function run(creep) {
                 collectFrom = null;
 
             // let collectFrom = Game.getObjectById(creep.memory.tid);
+            console.log(collectFrom);
             if (collectFrom) {
                 creep.withdraw(collectFrom, RESOURCE_ENERGY);
             }
