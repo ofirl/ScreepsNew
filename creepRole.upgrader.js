@@ -44,7 +44,7 @@ function run(creep) {
             if (creep.memory.tid)
                 target = Game.getObjectById(creep.memory.tid);
 
-            console.l
+            console.log(target);
 
             if (!target) {
                 // The target was destroyed.
