@@ -22,7 +22,7 @@ module.exports = {
                     filter: (s) => s.structureType === STRUCTURE_CONTAINER || s.structureType === STRUCTURE_STORAGE
                 });
 
-                room.memory.upgradeContainer = structures && structures.length ? structures[0] : null;
+                room.memory.upgradeContainer = structures && structures.length ? structures[0].id : null;
             }
 
             room.memory.spwanSettingsRefresh = Game.time + 100;
